@@ -3,8 +3,17 @@ import 'pages/chats_screen.dart';
 import 'pages/groups_screen.dart';
 import 'pages/friends_screen.dart';
 import 'pages/account_screen.dart';
+import 'pages/auth_screen.dart';
+import 'firebase_options.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(const WhatsAppClone());
 }
 
@@ -18,7 +27,8 @@ class WhatsAppClone extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 76, 175, 80))
       ),
-      home: const HomeScreen(),
+      // home: const HomeScreen(),
+      home: AuthScreen()
     );
   }
 }
